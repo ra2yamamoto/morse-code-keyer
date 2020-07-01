@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Reciever/Keyer</title>
+    <script src="morse.js"></script>
+    <style>
+        .dissapearing {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="dissapearing">How it works:</h1>
+    <h2 class="dissapearing">
+        Press the button and input morse code with any key. <br>
+        Press R to Clear the screen. <br>
+        Timing is based on Farnsworth, with 20 wpm on intra-character speed and 10-15 on inter-character speed and words. <br>
+    </h2>
+    <br class="dissapearing">
+    <button id="start-button" class="dissapearing" style="background-color: white; font-size: 20px; padding: 20px;">Press to Start</button>
+    <div id="noting"></div>
+    <div id="container" style="font-size: 60px; letter-spacing: -5px; font-family: monospace;"></div>
+    <div id="translated" style="font-size: 60px; font-family: monospace;"></div>
+    
+</body>
+</html>
