@@ -79,6 +79,13 @@ var keys = new Map([
 ]);
 
 window.onload = (event) => {
+
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+            FastClick.attach(document.body);
+        }, false);
+    }
+
     last = Date.now();
     start = Date.now();
     document.querySelector("#container").innerHTML = "";
@@ -86,6 +93,7 @@ window.onload = (event) => {
     document.querySelector("#start-button").addEventListener('click', () => {
         if (!started) startAudio();
         [...document.querySelectorAll(".dissapearing")].map(e => e.style.display = 'none');
+        document.querySelector("#paddle").style.display = 'block';
     })
 
     document.querySelector("#clear-button").addEventListener('click', () => {
@@ -96,8 +104,20 @@ window.onload = (event) => {
         update();
     });
     
-    document.querySelector("#full").addEventListener('mousedown', inputDown);
-    document.querySelector("#full").addEventListener('mouseup', inputUp);
+    // document.addEventListener('touchstart', inputDown);
+    // document.addEventListener('mousedown', inputDown);
+    // document.addEventListener('touchend', inputUp);
+    // document.addEventListener('dblclick', inputUp);
+    // document.addEventListener('mouseup', inputUp);
+
+    document.querySelector("#paddle").addEventListener('click dblclick', (e) => {
+        e.preventDefault();
+    });
+
+    document.querySelector("#paddle").addEventListener('mousedown', inputDown);
+    document.querySelector("#paddle").addEventListener('mouseup', inputUp);
+    document.querySelector("#paddle").addEventListener('touchstart', inputDown);
+    document.querySelector("#paddle").addEventListener('touchend', inputUp);
 }
 
 document.addEventListener('keydown', inputDown);
@@ -109,6 +129,8 @@ document.addEventListener('keydown', inputDown);
 document.addEventListener('keyup', inputUp);
 
 function inputDown (evt) {
+    evt.preventDefault();
+
     if (evt.key == "r" || evt.key == "R") {
         text = "";
         letter = "";
@@ -126,6 +148,8 @@ function inputDown (evt) {
 }
 
 function inputUp (evt) {
+    evt.preventDefault();
+
     if (evt.key == "r" || evt.key == "R") {
         return;
     } 

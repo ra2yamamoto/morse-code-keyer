@@ -4,12 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morse Reciever/Keyer</title>
+    <script src="https://raw.githubusercontent.com/ftlabs/fastclick/master/lib/fastclick.js"></script>
+    <script src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script>
     <script src="morse.js"></script>
     <style>
         @media screen and (max-width: 800px) {
+            .no-highlight {
+                -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+            }
             .bruh {
                 display: block !important;
+                -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
             }
+            #full {
+                -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+            }
+
         }
         .dissapearing {
             font-family: monospace;
@@ -28,6 +65,20 @@
             position: fixed;
             top: 0px;
             left: 0px;
+
+        }
+        #paddle {
+            padding: 20px;
+            font-size: 20px;
+            font-family: monospace;
+            display: none;
+            border: 2px solid black;
+            text-decoration: none;
+            position: fixed;
+            left: calc(50% - 60px);
+            bottom: 20px;
+            -ms-touch-action: manipulation;	/* IE10  */
+            touch-action: manipulation;		/* IE11+ */
         }
     </style>
 </head>
@@ -44,8 +95,8 @@
     <button id="clear-button" class="bruh">Clear</button>
     <div id="noting"></div>
     <div id="full"></div>
-    <div id="container" style="font-size: 60px; letter-spacing: -5px; font-family: monospace;"></div>
-    <div id="translated" style="font-size: 60px; font-family: monospace;"></div>
-    
+    <div id="container" class="no-highlight" style="font-size: 60px; letter-spacing: -5px; font-family: monospace;"></div>
+    <div id="translated" class="no-highlight" style="font-size: 60px; font-family: monospace;"></div>
+    <a id="paddle">Paddle</a>
 </body>
 </html>
