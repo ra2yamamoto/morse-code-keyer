@@ -6,8 +6,28 @@
     <title>Morse Reciever/Keyer</title>
     <script src="morse.js"></script>
     <style>
+        @media screen and (max-width: 800px) {
+            .bruh {
+                display: block !important;
+            }
+        }
         .dissapearing {
             font-family: monospace;
+        }
+        .bruh {
+            display: none;
+            background-color: white;
+            font-size: 20px;
+            font-family: monospace;
+            padding: 20px;
+        }
+        #full {
+            z-index: -10;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0px;
+            left: 0px;
         }
     </style>
 </head>
@@ -20,7 +40,10 @@
     </h2>
     <br class="dissapearing">
     <button id="start-button" class="dissapearing" style="background-color: white; font-size: 20px; padding: 20px;">Press to Start</button>
+    <br class="dissapearing"><br class="dissapearing">
+    <button id="clear-button" class="bruh">Clear</button>
     <div id="noting"></div>
+    <div id="full"></div>
     <div id="container" style="font-size: 60px; letter-spacing: -5px; font-family: monospace;"></div>
     <div id="translated" style="font-size: 60px; font-family: monospace;"></div>
     

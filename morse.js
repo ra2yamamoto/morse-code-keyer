@@ -87,10 +87,28 @@ window.onload = (event) => {
         if (!started) startAudio();
         [...document.querySelectorAll(".dissapearing")].map(e => e.style.display = 'none');
     })
+
+    document.querySelector("#clear-button").addEventListener('click', () => {
+        text = "";
+        letter = "";
+        translated = "";
+        start = Date.now();
+        update();
+    });
+    
+    document.querySelector("#full").addEventListener('mousedown', inputDown);
+    document.querySelector("#full").addEventListener('mouseup', inputUp);
 }
 
-document.addEventListener('keydown', (evt) => {
+document.addEventListener('keydown', inputDown);
 
+// T = 1200 / W // where t = time in ms and w = wpm for PARIS
+// T = 1200 / 15 wpm
+// T = 80 ms for one dit ie one unit of time
+
+document.addEventListener('keyup', inputUp);
+
+function inputDown (evt) {
     if (evt.key == "r" || evt.key == "R") {
         text = "";
         letter = "";
@@ -105,14 +123,9 @@ document.addEventListener('keydown', (evt) => {
         }
     }
     update();
-})
+}
 
-// T = 1200 / W // where t = time in ms and w = wpm for PARIS
-// T = 1200 / 15 wpm
-// T = 80 ms for one dit ie one unit of time
-
-document.addEventListener('keyup', (evt) => {
-
+function inputUp (evt) {
     if (evt.key == "r" || evt.key == "R") {
         return;
     } 
@@ -149,7 +162,7 @@ document.addEventListener('keyup', (evt) => {
     }, funit * 10);
 
     update();
-})
+}
 
 function update () {
     document.querySelector("#container").innerHTML = text;
