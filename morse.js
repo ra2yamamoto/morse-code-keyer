@@ -16,6 +16,8 @@ var gain;
 
 var started = false;
 
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+
 var keys = new Map([
     ['.-', 'A'],
     ['-...', 'B'],
